@@ -9,15 +9,10 @@ public class TestMateria {
 	Examen examen1 = new Examen();
 	Examen examen2 = new Examen();
 
-	@Test
-	public void intentarEvaluar() {
-		try {
+	@Test(expected = NotaInvalidaException.class)
+	public void intentarEvaluar() throws NotaInvalidaException {
 			examen1.evaluar(11.0);
-		} catch (NotaInvalidaException e) {
-			e.printStackTrace();
 		}
-
-	}
 
 	@Test
 	public void evaluarBien() {
@@ -31,15 +26,13 @@ public class TestMateria {
 		}
 	}
 
-	@Test
-	public void intentarCalificar() {
-		try {
-			programacion.calificar(8, 11.0);
-		} catch (ExamenInvalidoException e) {
-			e.printStackTrace();
-		} catch (NotaInvalidaException e) {
-			e.printStackTrace();
-		}
+	@Test (expected = ExamenInvalidoException.class)
+	public void intentarCalificar() throws  ExamenInvalidoException {
+			try {
+				programacion.calificar(19, 1.0);
+			} catch (NotaInvalidaException e) {
+				e.printStackTrace();
+			}
 	}
 
 	@Test
@@ -55,5 +48,5 @@ public class TestMateria {
 			e.printStackTrace();
 		}
 	}
-  
+	
 }
