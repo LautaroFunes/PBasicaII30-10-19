@@ -1,0 +1,7 @@
+public class ExamenInvalidoException extends Exception{
+	
+	public ExamenInvalidoException(){
+		super("Examen invalido");
+	}
+	
+}
