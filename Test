@@ -1,0 +1,59 @@
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class TestMateria {
+
+	Materia programacion = new Materia();
+	Examen examen1 = new Examen();
+	Examen examen2 = new Examen();
+
+	@Test
+	public void intentarEvaluar() {
+		try {
+			examen1.evaluar(11.0);
+		} catch (NotaInvalidaException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void evaluarBien() {
+		try {
+			examen1.evaluar(8.0);
+			Double valorEsperado = 8.0;
+			Double valorObtenido = examen1.getNota();
+			Assert.assertEquals(valorEsperado, valorObtenido);
+		} catch (NotaInvalidaException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void intentarCalificar() {
+		try {
+			programacion.calificar(8, 11.0);
+		} catch (ExamenInvalidoException e) {
+			e.printStackTrace();
+		} catch (NotaInvalidaException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void calificarBien() {
+		try {
+			programacion.calificar(2, 8.0);
+			Double vO = examen1.getNota();
+			Double vE = 8.0;
+			assertEquals(vE, vO);
+		} catch (ExamenInvalidoException e) {
+			e.printStackTrace();
+		} catch (NotaInvalidaException e) {
+			e.printStackTrace();
+		}
+	}
+  
+}
