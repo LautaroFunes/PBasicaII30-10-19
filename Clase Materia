@@ -1,0 +1,37 @@
+public class Materia {
+
+	private Examen examen1;
+	private Examen examen2;
+
+	public Materia() {
+	}
+
+	public Examen getExamen1() {
+		return examen1;
+	}
+
+	public void setExamen1(Examen examen1) {
+		this.examen1 = examen1;
+	}
+
+	public Examen getExamen2() {
+		return examen2;
+	}
+
+	public void setExamen2(Examen examen2) {
+		this.examen2 = examen2;
+	}
+
+	public void calificar(Integer numeroDeExamen, Double nota) throws ExamenInvalidoException, NotaInvalidaException {
+		if (numeroDeExamen == 1) {
+			this.examen1.evaluar(nota);
+			if (numeroDeExamen == 2) {
+				this.examen2.evaluar(nota);
+			}
+		}
+		else {
+			throw new ExamenInvalidoException();
+		}
+	}
+
+}
