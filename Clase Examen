@@ -1,0 +1,23 @@
+public class Examen {
+	
+	private Double nota=0.0;
+
+	public Examen() {
+	}
+
+	public Double getNota() {
+		return nota;
+	}
+
+	public void setNota(Double nota) {
+		this.nota = nota;
+	}
+	
+	public void evaluar (Double nota) throws NotaInvalidaException {
+		if(nota >=0 && nota<=10) {
+			this.setNota(nota);
+		}
+		else 
+		throw new NotaInvalidaException();
+	}
+}
